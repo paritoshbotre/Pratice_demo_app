@@ -10,7 +10,7 @@ class Product
   belongs_to :supplier 
 
   def as_json(options = {})
-    super(only: [:sku, :name, :description, :long_description], methods: [:supplier_name])
+    super(only: [:sku, :name, :description, :long_description, :_id], methods: [:supplier_name])
   end
 
   def supplier_name
