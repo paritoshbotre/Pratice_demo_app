@@ -1,0 +1,42 @@
+.row
+  .col-md-5
+    .col-md-5
+      %input#table-search.form-control{:placeholder => "Search here...", :type => "text"}
+
+    .col-sm-3
+      %select.st_per_page.form-control
+        %option{:value => "10"}
+          10
+        %option{:value => "20"}
+          20
+        %option{:value => "30"}
+          30
+        %option{:value => "50"}
+          50
+%table#products_stream.table.table-striped
+  %thead
+    %tr
+      %th SKU 
+      %th Name 
+      %th Description 
+      %th Long Description 
+      %th Supplier 
+      %th Action
+  %tbody
+
+%script#product_table_template.table.table-striped{:type => 'text/html'}
+  {{#record}}
+  %tr
+    %td {{record.sku}}
+    %td {{record.name}}
+    %td {{record.description}}
+    %td {{record.long_description}}
+    %td {{supplier_name}}
+    %td
+      .col-md-3
+        %a.btn.btn-primary{title: "Edit", :href => "/products/{{id}}/edit"} Edit
+  {{/record}}
+
+:javascript
+  var products = #{@products.to_json};
+  load_stream_table()

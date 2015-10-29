@@ -1,0 +1,25 @@
+%header.header-frontend
+  .navbar.navbar-inverse
+    .container
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        .row
+          %a.navbar-brand.pull-left{:href => root_path}
+            = 'MY APP'
+      .navbar-collapse.collapse
+        %ul.nav.navbar-nav.pull-right
+          - unless user_signed_in?
+            %li= link_to 'Sign up', new_user_registration_path 
+          - else
+            %li.dropdown 
+              %li= link_to 'List User', '#' 
+              %li= link_to 'Product Listing', '#'
+              %li= link_to 'Home', root_path
+              %li= link_to 'Articles', '#' 
+              %li.dropdown 
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+
