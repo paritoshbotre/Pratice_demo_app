@@ -1,0 +1,7 @@
+= simple_form_for @product do |f|
+  = f.input :sku
+  = f.input :name
+  = f.input :description
+  = f.input :long_description
+  = f.input :supplier_id, collection: get_supplier, include_blank: false 
+  = f.submit 'Save', class: 'btn btn-primary'

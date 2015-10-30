@@ -15,3 +15,28 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+window.show_notification = function(text, type) {
+  console.log('noty loadded success');
+  window.noty_obj = noty({
+    layout: 'topRight',
+    text: text,
+    type: type,
+    theme: 'relax',
+    closeWith: ['click'],
+    timeout: 3000,
+    animation: {
+      open: { height: 'toggle' },
+      close: { height: 'toggle' },
+      easing: 'swing',
+      speed: 500
+    }
+  });
+};
+
+window.close_noty_in = function(time) {
+  return setTimeout((function() {
+    return $.noty.closeAll();
+  }), time);
+};
+
