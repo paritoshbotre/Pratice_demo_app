@@ -34,7 +34,8 @@
     %td {{supplier_name}}
     %td
       .col-md-3
-        %a.btn.btn-primary{title: "Edit", :href => "/products/{{_id.$oid}}/edit"} Edit
+        //%a.btn.btn-primary{title: "Edit", :href => "/products/{{_id.$oid}}/edit"} Edit
+        = link_to "Edit", "{{edit_product_path}}", class: 'btn btn-primary'
   {{/record}}
 
 :javascript
