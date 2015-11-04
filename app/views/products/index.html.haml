@@ -36,7 +36,21 @@
       .col-md-3
         //%a.btn.btn-primary{title: "Edit", :href => "/products/{{_id.$oid}}/edit"} Edit
         = link_to "Edit", "{{edit_product_path}}", class: 'btn btn-primary'
+        /= link_to "Edit", "#myModal", class: 'btn btn-primary', 'data-toggle' => 'modal'
   {{/record}}
+
+#myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  //.modal-dialog{:role => "document"}
+  //  .modal-content
+  //    .modal-header
+  //      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+  //        %span{"aria-hidden" => "true"} &times;
+  //      %h4#myModalLabel.modal-title Modal title
+  //    .modal-body
+  //    .modal-footer
+  //      %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+  //      %button.btn.btn-primary{:type => "button"} Save changes
+
 
 :javascript
   var products = #{@products.to_json};
