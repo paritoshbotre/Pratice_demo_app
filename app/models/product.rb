@@ -10,6 +10,8 @@ class Product
 
   slug :sku
 
+  default_scope -> {where(company_id: Company.current_id)}
+
   # associations
   #
   belongs_to :supplier 
