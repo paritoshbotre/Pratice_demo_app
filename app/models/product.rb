@@ -2,6 +2,7 @@ class Product
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Slug
+  include ProductMethods
 
   field :sku,            type: String
   field :name,           type: String
@@ -27,7 +28,7 @@ class Product
   end
 
   def supplier_name
-    return self.supplier.name
+    return self.supplier.try(:name)
   end
 
 end

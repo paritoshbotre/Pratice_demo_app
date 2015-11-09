@@ -1,5 +1,12 @@
 class ProductsController < ApplicationController
 
+  def import
+    if params[:file].present?
+      Product.import(params[:file]) 
+      redirect_to products_path, notice: 'Products Imported'
+    end
+  end
+
   def index
     offset_val = params[:offset] || 0
     limit_val = params[:limit] || 25

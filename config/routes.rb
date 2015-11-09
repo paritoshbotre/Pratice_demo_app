@@ -4,5 +4,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'products#index'
 
-  resources 'products'
+  resources 'products' do
+    collection do  
+      match :import, via: [:get, :post]
+    end
+  end
 end
