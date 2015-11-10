@@ -3,7 +3,6 @@ require File.expand_path('../boot', __FILE__)
 require "rails"
 require 'csv'
 require 'roo'
-#require 'iconv'
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -31,5 +30,6 @@ module DemoApp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.active_job.queue_adapter = :sidekiq
   end
 end

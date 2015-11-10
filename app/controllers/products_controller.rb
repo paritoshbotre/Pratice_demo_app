@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!
 
   def import
     if params[:file].present?
-      Product.import(params[:file]) 
-      redirect_to products_path, notice: 'Products Imported'
+      file = params[:file]
+      job = ExampleJob.perform_later(params[:file].path, current_user.email)
+      redirect_to products_path, notice: 'Products is being uploaded... You will receive email once it is uploaded successfully'
     end
   end
 
@@ -36,5 +38,12 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:id, :name, :sku, :long_description, :description, :supplier_id)
+  end
+
+  def moving_file_to_new_location(file)
+    file_path = file.path
+    new_file_path = '/public/abc.xlsx'
+    FileUtils.cp(file_path, Rails.root.join(new_file_path))
+    File.open new_file_path
   end
 end
