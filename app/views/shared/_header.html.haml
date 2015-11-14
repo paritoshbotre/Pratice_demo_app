@@ -16,11 +16,16 @@
             %li= link_to 'Sign up', new_user_registration_path 
           - else
             %li.dropdown 
-              %li= link_to 'List User', '#' 
-              %li= link_to 'Product Listing', '#'
               %li= link_to 'Home', root_path
               %li= link_to 'Articles', '#' 
               %li.dropdown 
                 %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
                 %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+              %li
+                = form_tag movies_path, class: 'navbar-form navarbar-left', method: :get do
+                  .input-group.input-group-md
+                    = text_field_tag :search, params[:search], class: 'form-control', id: 'search_movie'#, autocomplete: 'off'
+                  .form-group
+                    = submit_tag 'Search', class: 'btn btn-default' 
+
 

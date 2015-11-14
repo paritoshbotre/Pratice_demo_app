@@ -6,5 +6,6 @@ module UserMethods
     validates_uniqueness_of :email
 
     has_many :articles
+    has_many :movies
   end
 end

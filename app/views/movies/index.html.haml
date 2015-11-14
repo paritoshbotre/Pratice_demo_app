@@ -1,0 +1,9 @@
+.row
+  - @movies.each do |movie|
+    .col-md-3
+      .thumbnail
+        = link_to image_tag(movie.avatar.url(:medium), class: 'images'), '#'
+        .caption
+          %h3= movie.title
+
+= link_to 'New Movie', new_movie_path
