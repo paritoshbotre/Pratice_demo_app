@@ -7,3 +7,4 @@
           %h3= movie.title
 
 = link_to 'New Movie', new_movie_path
+= will_paginate @movies, renderer: BootstrapPagination::Rails
